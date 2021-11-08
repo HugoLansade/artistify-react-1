@@ -15,7 +15,7 @@ router.get("/styles", async (req, res) => {
   }
 });
 
-router.get("/styles/id", async (req, res) => {
+router.get("/styles/:id", async (req, res) => {
   try {
     const style = await styleModel.findById(req.params.id)
     res.status(200).json(style);
@@ -25,7 +25,7 @@ router.get("/styles/id", async (req, res) => {
   }
 });
 
-router.delete("/styles/id", async (req, res) => {
+router.delete("/styles/:id", async (req, res) => {
   try {
     const style = await styleModel.findByIdAndDelete(req.params.id)
     res.status(200).json(style);

@@ -50,14 +50,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-// ------------------------------
-const corsOptions = {
-  origin: [process.env.CLIENT_URL],
-  credentials: true,
-  optionsSuccessStatus: 200
-};
 
-app.use(cors(corsOptions));
 
 
 
