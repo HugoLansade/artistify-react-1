@@ -22,7 +22,7 @@ router.get("/labels", (req, res) => {
     }
   });
   
-  router.get("/labels/id", async (req, res) => {
+  router.get("/labels/:id", async (req, res) => {
     try {
       const label = await styleModel.findById(req.params.id)
       res.status(200).json(label);
@@ -32,7 +32,7 @@ router.get("/labels", (req, res) => {
     }
   });
   
-  router.delete("/labels/id", async (req, res) => {
+  router.delete("/labels/:id", async (req, res) => {
     try {
       const label = await styleModel.findByIdAndDelete(req.params.id)
       res.status(200).json(label);

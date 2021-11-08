@@ -1,10 +1,12 @@
 // custom tools
-// import APIHandler from "../api/handler";
+
 import LabPreview from "../components/preview/LabPreview";
 // styles
 import "./../styles/artist.css";
 import "./../styles/comment.css";
 import "./../styles/star.css";
+
+
 
 export default function Artists() {
 
