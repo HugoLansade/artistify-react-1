@@ -8,19 +8,23 @@ import "./../styles/star.css";
 
 
 
-export default function Artists() {
+export default function Artists(props) {
 
   return (
     <>
-      <h1 className="title diy">D.I.Y (Artist)</h1>
-      <p>
-        Use the image below to code the {`<Artist />`} component.
-        <br />
-        This component import child components: {`<Stars />`}, {`<Comments />`}{" "}
-        and {`<Discography />`}
-      </p>
+    
+    <h1>Coucou</h1>
+      <h1 className="title diy">{props.details.name}</h1>
+      <p>{props.details.description}</p>
 
-      <h1 className="title diy">D.I.Y (Stars)</h1>
+      <br />
+      <p>
+        This component import child components: {`<Stars />`}, {`<Comments />`}{" "}
+        and {`<Discography />`}</p>
+
+      <a href={props.details.wikiURL} >Wikipedia page</a>
+
+      {/* <h1 className="title diy">D.I.Y (Stars)</h1>
       <p>
         The Stars component allow the end-users to rate an artist/album.
         <br />
@@ -46,11 +50,11 @@ export default function Artists() {
         Import a custom {`<Comments />`} allowing the end-users to post comments
         related to the current artist.
         <br />
-      </p>
+      </p> */}
 
-      <LabPreview name="artist"/>
+      <LabPreview name="artist" />
 
-     
+
     </>
   );
 }
