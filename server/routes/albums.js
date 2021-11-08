@@ -9,7 +9,14 @@ const uploader = require("./../config/cloudinary");
 
 router.get("/albums", async (req, res, next) => {
   try {
-    const albums = await albumModel.find();
+    const albums = await albumModel.find()
+    .populate('label')
+    .populate({
+      path:'artist',
+      populate : {
+        path : 'style',
+      }
+    });
     console.log(albums)
     res.status(200).json(albums);
   } catch (err) {
