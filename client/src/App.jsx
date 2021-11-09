@@ -14,6 +14,8 @@ import HeaderMain from "./components/template/HeaderMain";
 import FooterMain from "./components/template/FooterMain";
 import NavMobile from "./components/nav/NavMobile";
 import TabAdmin from "./components/form/TabAdmin";
+import FormUpdate from "./components/form/FormUpdate";
+
 
 
 export default function App() {
@@ -40,6 +42,8 @@ export default function App() {
           <Route path="/contact-us" component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/admin/:type(artists|albums|labels|styles)" component={TabAdmin} />
+          <Route path="/artist/update/:id" component={FormUpdate} />
+
 
 
           {/* handling 404 pages (if no matched route above this component triggers) */}

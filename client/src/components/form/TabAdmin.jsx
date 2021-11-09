@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrash, faPen, faEdit} from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom'
+
+
 
 export default class TabAdmin extends Component {
   state = {
     artists: [],
   };
+
+  
 
   fetchArtists = () => {
     // APIHandler.get("/api/artists")
@@ -22,16 +29,38 @@ export default class TabAdmin extends Component {
       });
   };
 
+
+
+
+
+
+
   componentDidMount() {
     console.log("hey");
     this.fetchArtists();
   }
+
+  handleUpdate = async (id) => {
+
+  }
+
+  handleDelete= async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/artists/${id}`);
+      this.fetchArtists();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
 
   render() {
     const page = this.props.match.params.type;
     console.log(page === "albums");
     const { artists } = this.state;
     // console.log('artists', artists);
+   
+
 
     if(artists){
         if (page === "artists") {
@@ -56,8 +85,10 @@ export default class TabAdmin extends Component {
                         <td>{artist.name}</td>
                         <td>{artist.style.name}</td>
                         <td>{artist.rates}*</td>
-                        <td>ICONE de crayon</td>
-                        <td>ICONE de poubelle</td>
+                        {/* <td><FontAwesomeIcon className="is-clickable fa-lg" icon={faPen} onClick={() => this.handleUpdate(artist._id, "update")}/> </td> */}
+                        <td><Link to={"/artist/update/" + artist._id}> <FontAwesomeIcon className="is-clickable fa-lg" icon={faPen}/></Link></td>
+                        
+                        <td><FontAwesomeIcon className="is-clickable fa-lg" icon={faTrash} onClick={() => this.handleDelete(artist._id)}/> </td> 
                       </tr>
                       )                 
                     })}

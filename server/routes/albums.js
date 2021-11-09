@@ -43,6 +43,13 @@ router.get("/albums/:id", async (req, res, next) => {
 router.patch("/admin/albums/:id", async (req, res, next) => {
   try{
     const albumUpdated = await albumModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .populate('label')
+    .populate({
+      path:'artist',
+      populate : {
+        path : 'style',
+      }
+    });
     res.status(200).json(albumUpdated);
   } catch (err) {
     next(err)
