@@ -13,6 +13,8 @@ import NotFound from "./views/NotFound";
 import HeaderMain from "./components/template/HeaderMain";
 import FooterMain from "./components/template/FooterMain";
 import NavMobile from "./components/nav/NavMobile";
+import TabAdmin from "./components/form/TabAdmin";
+
 
 export default function App() {
   const [navMobileStatus, setNavMobileStatus] = useState(false);
@@ -37,6 +39,8 @@ export default function App() {
           <Route path="/albums/:id" component={Album} />
           <Route path="/contact-us" component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/admin/:type(artists|albums|labels|styles)" component={TabAdmin} />
+
 
           {/* handling 404 pages (if no matched route above this component triggers) */}
           <Route path="*" component={NotFound} />

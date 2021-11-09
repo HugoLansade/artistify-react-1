@@ -8,7 +8,7 @@ export default function List({ data, cssList = "list generic", cssItem = "item",
     <ul className={cssList}>
       {Boolean(data.length) ? data.map((d, i) => (
         <li key={i} className={cssItem}>
-          {Component && <Component data={d} />}
+          {Component && <Component data={d}/>}
           {!Component && d}
         </li>
       )) : <p>Sorry, no data yet ...</p>}

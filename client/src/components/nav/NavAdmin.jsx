@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+
 
 export default function NavAdmin() {
+
 
   return (
     <nav id="nav_admin" className="nav row">

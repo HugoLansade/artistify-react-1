@@ -40,6 +40,26 @@ router.get("/albums/:id", async (req, res, next) => {
   }
 });
 
+router.patch("/admin/albums/:id", async (req, res, next) => {
+  try{
+    const albumUpdated = await albumModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(albumUpdated);
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post("/admin/albums", async (req, res, next) =>{
+  try{
+    const newAlbum = await albumModel.create(req.body);
+    res.status(201).json(newAlbum);
+  } catch(err){
+    next(err)
+  }
+})
+
+
+
 router.delete("/albums/:id", async (req, res, next) => {
   try {
     const deletedAlbum = await albumModel.findByIdAndDelete(req.params.id)

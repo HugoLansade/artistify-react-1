@@ -14,7 +14,7 @@ state= {
   
 //   try{
 //     const res= await APIHandler.get("/artists");
-//     console.log('hey youuu')
+//     console.log('hey youuu laaaaaaaa')
 //     console.log(res) //on stocke dans res la promesse de ça
 //     this.setState({artists: res})
 //   }
@@ -55,7 +55,7 @@ componentDidMount() {
       
       <React.Fragment>
 
-        <h1 className="title diy">{artists}</h1>
+        <h1 className="title diy"></h1>
 
         <LabPreview name="artists"/>
 
