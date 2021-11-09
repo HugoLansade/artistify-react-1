@@ -1,26 +1,51 @@
 // custom tools
+import axios from "axios";
 
 import LabPreview from "../components/preview/LabPreview";
 // styles
 import "./../styles/artist.css";
 import "./../styles/comment.css";
 import "./../styles/star.css";
+import React, { Component } from "react";
 
 
+export default class Artists extends Component {
+  state = {
+    artist: null,
+  };
 
-export default function Artists() {
+  async componentDidMount() {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/api/artists/" + this.props.match.params.id
+      );
+      this.setState({
+        artist: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-  return (
-    <>
-      <h1 className="title diy">D.I.Y (Artist)</h1>
-      <p>
-        Use the image below to code the {`<Artist />`} component.
+  render() {
+    const {artist} = this.state
+    return (
+      <>
+      {!artist ? (<p>Wesh y'a Rien gros</p>) :(<>
+        <h1>{artist.name}</h1>
+        <h1 className="title diy">{}</h1>
+        <p>Description :  {artist.description}</p>
+        <p>Style : {artist.style.name}</p>
+
         <br />
-        This component import child components: {`<Stars />`}, {`<Comments />`}{" "}
-        and {`<Discography />`}
-      </p>
+        <p>
+          This component import child components: {`<Stars />`},{" "}
+          {`<Comments />`} and {`<Discography />`}
+        </p>
 
-      <h1 className="title diy">D.I.Y (Stars)</h1>
+        {/* <a href={} >Wikipedia page</a> */}
+
+        {/* <h1 className="title diy">D.I.Y (Stars)</h1>
       <p>
         The Stars component allow the end-users to rate an artist/album.
         <br />
@@ -46,11 +71,11 @@ export default function Artists() {
         Import a custom {`<Comments />`} allowing the end-users to post comments
         related to the current artist.
         <br />
-      </p>
+      </p> */}
 
-      <LabPreview name="artist"/>
-
-     
-    </>
-  );
+        <LabPreview name="artist" />
+      </>) }
+      </>
+    );
+  }
 }

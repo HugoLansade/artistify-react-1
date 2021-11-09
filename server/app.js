@@ -50,9 +50,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-// ------------------------------
-
-
 
 //------------------------------------------
 // Fake Loggedin Users

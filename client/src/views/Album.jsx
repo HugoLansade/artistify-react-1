@@ -1,14 +1,49 @@
 // custom tools
 // import APIHandler from "../api/handler";
 import LabPreview from "../components/preview/LabPreview";
+import React, { Component } from "react";
+import axios from "axios";
+
 // styles
 import "../styles/album.css";
 import "../styles/comment.css";
 import "../styles/star.css";
 
-export default function Album({ match }) {
+export default class  Album extends Component {
+state = {
+  album:null,
+}
+
+ async componentDidMount() {
+  try {
+      const res = await axios.get(
+        "http://localhost:5000/api/albums/" + this.props.match.params.id
+      );
+      this.setState({
+        album: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+ }
+
+render () {
+  const {album} = this.state
   return (
     <>
+    {
+      !album ? (<p>Wesh y'a Rien gros</p>) : (
+        <>
+        <h1>{album.title}</h1>
+        <h1 className="title diy">{}</h1>
+        
+        <p>Style : {album.artist.style.name}</p>
+       
+        <p>Release Date : {album.releaseDate}</p>
+        </>
+
+      )
+    }
       <h1 className="title diy">D.I.Y (Album)</h1>
       <p>
         Use the image below to code the {`<Album />`} component.
@@ -41,4 +76,6 @@ export default function Album({ match }) {
       <LabPreview name="album" />
     </>
   );
+}
+ 
 }

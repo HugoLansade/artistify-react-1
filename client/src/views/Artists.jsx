@@ -5,6 +5,8 @@ import APIHandler from "../api/handler";
 import LabPreview from "../components/preview/LabPreview";
 // styles
 import "../styles/card.css";
+import Artist from "./Artist";
+import { Link } from 'react-router-dom';
 
 export default class Artists extends Component {
 state= {
@@ -43,21 +45,37 @@ fetchArtists = () => {
 
       
 
-componentDidMount() {
-  console.log('hey')
-  this.fetchArtists();
-}
+
+
+  componentDidMount() {
+    console.log('hey')
+    this.fetchArtists();
+  }
 
   render() {
     const { artists } = this.state;
     console.log('>>>>>>>>>>>>>', artists)
     return (
-      
+
       <React.Fragment>
+        {!artists ? (<p>Wesh il y a pas d'artistes! Mais c'est toi l'artiste! </p>) :
+          (<>
+          <ul>
+          {artists.map((artist, index) => {
+              return <li><Link to={"/artists/" + artist._id}>{artist.name} </Link></li> 
+
+            })}
+          </ul>
+            
+
+            <h1 className="title diy"> </h1>
+
+            <LabPreview name="artists" />
+          </>)
+        }
 
         <h1 className="title diy"></h1>
 
-        <LabPreview name="artists"/>
 
       </React.Fragment>
     );
