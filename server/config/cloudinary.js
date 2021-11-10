@@ -1,5 +1,5 @@
 const cloudinary = require("cloudinary");
-const cloudinaryStorage = require("multer-storage-cloudinary");
+const CloudinaryStorage = require("multer-storage-cloudinary");
 const multer = require("multer");
 
 cloudinary.config({
@@ -8,9 +8,10 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET
 });
 
-const storage = cloudinaryStorage({
+const storage =  CloudinaryStorage({
+  // cloudinary,
   cloudinary,
-  folder: "user-pictures",
+  // folder: "user-pictures",
   //  params below is only needed if uploading media types other than images (video, audio...)
   // params: {
   //     ressource_type: "raw"
