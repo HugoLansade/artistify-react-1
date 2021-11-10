@@ -74,7 +74,7 @@ fetchArtists = () => {
           </>)
         }
 
-        <h1 className="title diy"></h1>
+        
 
 
       </React.Fragment>
